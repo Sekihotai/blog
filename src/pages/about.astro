@@ -1,4 +1,5 @@
 ---
+const pageTitle = "About Me"
 import Navbar from '../components/navbar.astro'
 ---
 
@@ -11,9 +12,11 @@ import Navbar from '../components/navbar.astro'
 		<title>Astro</title>
 	</head>
 	<body>
-		<header>
-			<Navbar />
-		</header>
-		<h1>AstroWORLD</h1>
+        <header>
+            <Navbar />
+        </header>
+		<h1>{pageTitle}</h1>
+
+        <p>My online name is spiritual. I've been programming for no more than 8 months, however I have always been interested in tech and design.</p>
 	</body>
 </html>

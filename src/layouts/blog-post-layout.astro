@@ -1,0 +1,62 @@
+---
+import Navbar from '../components/navbar.astro'
+const {frontmatter} = Astro.props
+---
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+    header {
+        margin: 0;
+        padding: 0
+    }
+
+    .title-container h1, .title-container h3 {
+        font-family: 'Noto Sans JP', sans-serif;
+        margin: 0;
+        padding: 0                                
+    }
+
+    body {
+        height: 100%;
+        width: 100%
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%
+    }
+
+    .content-container {
+        width: 50%
+    }
+    
+    
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <Navbar />
+    </header>
+    <main>
+        <div class="title-container">
+            <h1>{frontmatter.title}</h1>
+            <h3>WRITTEN BY {frontmatter.author}</h3>
+            </div>
+            <div class="content-container">
+                <slot />
+            </div>
+    </main>
+</body>
+</html>
