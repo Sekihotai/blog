@@ -1,0 +1,44 @@
+---
+const { title, author, url } = Astro.props;
+---
+
+<style>
+    .preview {
+        width: 350px;
+        height: 250px;
+        border-style: solid;
+        border-width: 5px;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: center
+    }
+
+    * {
+        font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    h2, h3 {
+        user-select: none;
+    }
+
+    
+</style>
+
+<div class="preview" data-url={url}>
+    <h2>{title}</h2>
+    <h3>BY {author}</h3>
+</div>
+
+<script>
+    document.addEventListener("click", function(event) {
+        // Check if the clicked element has the class "preview" or is a child of an element with that class
+        const preview = event.target.closest(".preview");
+        if (preview) {
+            window.location.href = preview.dataset.url;
+        }
+    });
+</script>

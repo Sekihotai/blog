@@ -2,6 +2,7 @@
 layout: ../../layouts/blog-post-layout.astro
 title: CTRL+SHIFT DESIGN
 author: THE NINGEN
+draft: true
 ---
 
 CTRL+SHIFT is first and foremost a web design competition, with the main focus being the look and feel of the website. 

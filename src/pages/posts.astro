@@ -1,6 +1,26 @@
 ---
 import Navbar from '../components/navbar.astro'
+import Preview from '../components/post-preview.astro'
+
+const posts = await Astro.glob('../pages/posts/*.md')
 ---
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%
+    }
+
+    .post-preview-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 10px;
+        gap: 20px
+    }
+</style>
 
 
 <!DOCTYPE html>
@@ -14,6 +34,8 @@ import Navbar from '../components/navbar.astro'
     <header>
         <Navbar />
     </header>
-    <p>aaaaaaa</p>
+    <div class="post-preview-container">
+        {posts.map((post) => <Preview title={post.frontmatter.title} author={post.frontmatter.author} url={post.url} />)}
+    </div>
 </body>
 </html>
