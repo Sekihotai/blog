@@ -1,4 +1,9 @@
-<style>
+---
+const {color = "black", color2 = "white"} = Astro.props;
+---
+
+<style define:vars={{color, color2}}>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
   /* Reset default margin and padding for the header and body */
   header {
     margin: 0;
@@ -17,13 +22,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
+    background-color: var(--color);
     height: 70px;
     padding: 0 20px
   }
 
   a {
-    color: white;
+    color: var(--color2);
     font-family: 'Noto Sans JP', sans-serif;
     text-decoration: none;
     font-weight: bold;
@@ -43,10 +48,9 @@
 </style>
 
 <div class="header-container">
-  <img src="https://i.imgur.com/58nOhXY.jpeg" id="logo">
   <div class="links">
     <a href="/">home</a>
-    <a href="/about">about</a>
+    <!-- <a href="/about">about</a> -->
     <a href="/posts">posts</a>
   </div>
     

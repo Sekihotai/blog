@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/blog-post-layout.astro
-title: CTRL+SHIFT DESIGN
+title: "CTRL+SHIFT: DESIGN"
 author: THE NINGEN
 draft: true
 ---

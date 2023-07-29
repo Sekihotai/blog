@@ -1,7 +1,12 @@
 ---
-const pageTitle = "About Me"
 import Navbar from '../components/navbar.astro'
 ---
+
+<style>
+	h1 {
+		font-family: 'Noto Sans JP', sans-serif;
+	}
+</style>
 
 <html lang="en">
 	<head>
@@ -15,8 +20,7 @@ import Navbar from '../components/navbar.astro'
         <header>
             <Navbar />
         </header>
-		<h1>{pageTitle}</h1>
-
+		<h1>ABOUT ME</h1>
         <p>My online name is spiritual. I've been programming for no more than 8 months, however I have always been interested in tech and design.</p>
 	</body>
 </html>
