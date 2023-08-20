@@ -1,26 +1,114 @@
 ---
-import Navbar from '../components/navbar.astro'
+import Navbar from "../components/navbar.astro";
 ---
 
 <style>
-	h1 {
-		font-family: 'Noto Sans JP', sans-serif;
-	}
+  @font-face {
+    font-family: "Neue";
+    src: url("../../HelveticaNeue.woff") format("woff");
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+    background-color: #00008b;
+  }
+
+  main {
+    flex: 1; /* Allow main to take the remaining vertical space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+  }
+
+  header {
+    position: fixed; /* Fix the navbar position */
+    width: 100%; /* Take full width of the viewport */
+    background-color: white; /* Set the background color of the navbar */
+  }
+
+  * {
+    font-family: "Neue", sans-serif;
+    font-weight: bold;
+    color: white;
+  }
+
+  main :global(.number) {
+    color: #7ec8e3;
+  }
 </style>
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-        <header>
-            <Navbar />
-        </header>
-		<h1>ABOUT ME</h1>
-        <p>My online name is spiritual. I've been programming for no more than 8 months, however I have always been interested in tech and design.</p>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <header>
+      <Navbar color="#00008B" color2="#7EC8E3" />
+    </header>
+    <main>
+      <div>NAME: SPIRITUAL</div>
+      <div>PROGRAMMING FOR:<span id="timeprogramming"></span></div>
+	  <div>ACCOUNTS: <a href="https://github.com/Sekihotai">GITHUB</a></div>
+
+    </main>
+  </body>
 </html>
+
+<script>
+  let last_run = 0;
+
+  function mainLoop() {
+    let cur_time = Date.now();
+
+    if (cur_time - last_run >= 1000) {
+      calculateTimeSinceBeginning();
+    }
+
+    requestAnimationFrame(mainLoop);
+  }
+
+  function calculateTimeSinceBeginning() {
+    last_run = Date.now();
+
+    // https://stackoverflow.com/a/69430296
+    let differenceInTime = Math.abs(
+      new Date().valueOf() - new Date("2022-08-29T14:08:00").valueOf()
+    );
+    let years = differenceInTime / (365 * 24 * 60 * 60 * 1000);
+    let days = differenceInTime / (24 * 60 * 60 * 1000);
+    let hours = (days % 1) * 24;
+    let minutes = (hours % 1) * 60;
+    let secs = (minutes % 1) * 60;
+
+    [years, days, hours, minutes, secs] = [
+      Math.floor(years),
+      Math.floor(days),
+      Math.floor(hours),
+      Math.floor(minutes),
+      Math.floor(secs),
+    ];
+
+    document.getElementById(
+      "timeprogramming"
+    ).innerHTML = `&nbsp;<span class="number">${years} </span>YEARS,
+    <span class="number">${days}</span> DAYS,
+    <span class="number">${hours}</span> HOURS,
+    <span class="number">${minutes}</span> MINUTES, AND
+    <span class="number">${secs}</span> SECONDS
+  `;
+  }
+
+  mainLoop();
+</script>

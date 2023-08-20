@@ -1,41 +1,56 @@
 ---
-import Navbar from '../components/navbar.astro'
-import Preview from '../components/post-preview.astro'
-
-const posts = await Astro.glob('../pages/posts/*.md')
+const allPosts = await Astro.glob('../pages/posts/*.md');
 ---
 
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        height: 100%
-    }
 
-    .post-preview-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        padding: 10px;
-        gap: 20px
-    }
+<style>
+  body,
+  html {
+    background: #fff;
+    font-family: "Bitstream Vera Sans", "Lucida Grande", "Lucida Sans Unicode",
+      Lucidux, Verdana, Lucida, sans-serif;
+  }
+  tr:nth-child(even) {
+    background: #f4f4f4;
+  }
+  th,
+  td {
+    padding: 0.1em 0.5em;
+  }
+  th {
+    text-align: left;
+    font-weight: bold;
+    background: #eee;
+    border-bottom: 1px solid #aaa;
+  }
+  #list {
+    border: 1px solid #aaa;
+    width: 100%;
+  }
+  .sorter, a {
+    color: #a33;
+  }
+  .sorter:hover, a:hover {
+    color: #e33;
+  }
 </style>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <header>
-        <Navbar />
-    </header>
-    <div class="post-preview-container">
-        {posts.map((post) => <Preview title={post.frontmatter.title} author={post.frontmatter.author} url={post.url} />)}
-    </div>
-</body>
-</html>
+<h1>Index of /pages/posts/</h1>
+<table id="list">
+  <thead>
+    <tr>
+      <th style="width: 55%">
+        <div class="sorter">File Name</div>
+      </th>
+      <th style="width: 20%">
+        <div class="sorter">File Size</div>
+      </th>
+      <th style="width: 25%">
+        <div class="sorter">Date</div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {allPosts.map((post) => <tr><td><a href={post.url}>{post.frontmatter.title}</a></td><td>{post.frontmatter.size} KiB</td><td>{post.frontmatter.date}</td></tr>)}
+  </tbody>
+</table>

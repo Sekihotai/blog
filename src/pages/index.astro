@@ -81,7 +81,7 @@ import Navbar from '../components/navbar.astro'
 			<Navbar color="#00008B" color2="#7EC8E3"/>
 		</header> 
 		<main>
-			<h2 class="message" id="topmessage">SIDDHARTHA GAUTAMA, FAMOUSLY KNOWN AS THE BUDDHA, POSITED THAT WE SUFFER IN LIFE DUE TO OUR OBSESSION WITH CLINGING TO ALL THAT CAN BE TAKEN FROM US.</p>
+			<h2 class="message" id="topmessage">HEAVEN</p>
 			<h1 id="maintext">霊的</h1>
 			<h2 class="message">SPIRITUAL // TÂM LINH</p>
 		</main>
@@ -89,14 +89,13 @@ import Navbar from '../components/navbar.astro'
 </html>
 
 <script>
-	const logowidth = document.getElementById("maintext").offsetWidth
-	const topmessage = document.getElementById("topmessage")
 	function resizeTopText() {
+		const logowidth = document.getElementById("maintext").offsetWidth
+		const topmessage = document.getElementById("topmessage")
 		topmessage.style.width = `${logowidth}px`
 		topmessage.style.display = "block"
 	}
 
 	resizeTopText()
-
 	window.addEventListener("resize", resizeTopText)
 </script>
