@@ -1,0 +1,75 @@
+---
+import Navbar from '../components/navbar.astro'
+---
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+	@font-face {
+		font-family: 'Neue';
+		src: url("../../HelveticaNeue.woff") format("woff")
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+		background-color: #00008B
+	}
+
+    header {
+		position: fixed; /* Fix the navbar position */
+		width: 100%; /* Take full width of the viewport */
+		background-color: white; /* Set the background color of the navbar */
+	}
+
+    main {
+		flex: 1; /* Allow main to take the remaining vertical space */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		margin: 0;
+		padding: 0
+	}
+
+    * {
+    font-family: "Neue", sans-serif;
+    font-weight: bold;
+    color: white;
+  }
+
+  .img-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px
+  }
+
+
+</style>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<header>
+			<Navbar color="#00008B" color2="#7EC8E3"/>
+		</header> 
+		<main>
+            <h2>GRAPHIC DESIGN PROJECTS</h2>
+            <div class="img-row">
+                <img src="https://i.imgur.com/7mm5U4n.png" style="height:400px;width:400px">
+                <img src="./memoir.png" style="width:517px">
+
+            </div>
+            
+        </main>
+	</body>
+</html>
+
